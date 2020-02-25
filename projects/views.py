@@ -1,8 +1,13 @@
 from django.shortcuts import render
-from projects.models import Project
+from projects.models import Quote
+import sqlite3
 
 # Create your views here.
 def index(request):
 
-    return render(request, 'index.html')
+    quotes = Quote.objects.all()
+    context = {
+        'quotes': quotes
+    }
+    return render(request, 'index.html', context)
 
